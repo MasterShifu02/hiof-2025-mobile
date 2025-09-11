@@ -1,19 +1,19 @@
 import { View } from "react-native";
 import { productStyles } from "./styles";
+import { Image } from "expo-image";
 import ProductName from "./ProductName";
 import ProductPrice from "./ProductPrice";
 import BuyButton from "./BuyButton";
-import { Image } from "expo-image";
 
-import MyImage from "../assets/img.jpg";
+import image from "../assets/img.jpg";
 
-export default function ProductCard() {
+export const ProductCard = () => {
   return (
     <View style={productStyles.card}>
       <ProductName />
       <ProductPrice />
-      <Image source={MyImage} style={{ width: 200, height: 200 }} />
+      <Image source={image} style={productStyles.image} contentFit="cover" />
       <BuyButton />
     </View>
   );
-}
+};
