@@ -20,10 +20,6 @@ export default function ProductCard(props: Props) {
     <View style={productStyles.card}>
       <ProductName name={product.name} />
       <ProductPrice price={product.price} />
-<<<<<<< HEAD
-      <ProductDescription description={product.description} />
-=======
->>>>>>> 5176cd1894dc574a2ac14be090341cf9fb56f2b5
       <Image source={MyImage} style={{ width: 200, height: 200 }} />
       <BuyButton />
     </View>
