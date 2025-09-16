@@ -4,9 +4,15 @@ import { type Product } from "./types";
 
 const product: Product = {
   id: "1",
+<<<<<<< Updated upstream
   name: "My new product",
   price: 29.99,
   description: "This is a sample product description.",
+=======
+  name: "Produkt 1",
+  price: 100,
+  description: "Dette er produkt 1",
+>>>>>>> Stashed changes
 };
 
 export default function App() {
@@ -16,6 +22,7 @@ export default function App() {
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

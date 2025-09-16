@@ -3,4 +3,8 @@ export interface Product {
   name: string;
   price: number;
   description: string;
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
