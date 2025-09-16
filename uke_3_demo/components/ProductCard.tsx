@@ -6,7 +6,6 @@ import BuyButton from "./BuyButton";
 import { Image } from "expo-image";
 
 import MyImage from "../assets/img.jpg";
-<<<<<<< Updated upstream
 import type { Product } from "../types";
 
 type Props = {
@@ -16,11 +15,6 @@ type Props = {
 export default function ProductCard(props: Props) {
   const { product } = props;
 
-=======
-import { Product } from "../types";
-
-export default function ProductCard({ product }: { product: Product }) {
->>>>>>> Stashed changes
   return (
     <View style={productStyles.card}>
       <ProductName name={product.name} />
