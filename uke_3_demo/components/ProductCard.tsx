@@ -7,6 +7,7 @@ import { Image } from "expo-image";
 
 import MyImage from "../assets/img.jpg";
 import type { Product } from "../types";
+import ProductDescription from "./ProductDescribtion";
 
 type Props = {
   product: Product;
@@ -18,7 +19,11 @@ export default function ProductCard(props: Props) {
   return (
     <View style={productStyles.card}>
       <ProductName name={product.name} />
-      <ProductPrice />
+      <ProductPrice price={product.price} />
+<<<<<<< HEAD
+      <ProductDescription description={product.description} />
+=======
+>>>>>>> 5176cd1894dc574a2ac14be090341cf9fb56f2b5
       <Image source={MyImage} style={{ width: 200, height: 200 }} />
       <BuyButton />
     </View>
