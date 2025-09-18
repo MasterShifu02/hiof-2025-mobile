@@ -1,7 +1,12 @@
-import { ScrollView, StyleSheet, View } from "react-native";
-import ProductCard from "./components/ProductCard";
-import { type Product } from "./types";
+import { useCallback, useMemo, useState } from "react";
+import { SafeAreaView, StatusBar, View } from "react-native";
 
+import BottomTabBar from "./components/BottomTabBar";
+import { layoutStyles } from "./components/styles";
+import HomeScreen from "./screens/HomeScreen";
+import PlaceholderScreen from "./screens/PlaceholderScreen";
+import type { TabItem, TabKey } from "./types/navigation";
+import { type Product } from "./types";
 
 const products: Product[] = [
   {
@@ -42,23 +47,55 @@ const products: Product[] = [
   },
 ];
 
+const TAB_ITEMS: TabItem[] = [
+  { key: "home", label: "Home" },
+  { key: "shoppingList", label: "Shopping List" },
+  { key: "groups", label: "Groups" },
+  { key: "profile", label: "Profile" },
+];
+
 export default function App() {
+  const [activeTab, setActiveTab] = useState<TabKey>("home");
+
+  const handleTabPress = useCallback((key: TabKey) => {
+    setActiveTab(key);
+  }, []);
+
+  const content = useMemo(() => {
+    switch (activeTab) {
+      case "home":
+        return <HomeScreen products={products} />;
+      case "shoppingList":
+        return (
+          <PlaceholderScreen
+            title="Shopping List"
+            subtitle="Build curated collections of the items you want to remember."
+          />
+        );
+      case "groups":
+        return (
+          <PlaceholderScreen
+            title="Groups"
+            subtitle="Bring friends together and share your favourite finds with ease."
+          />
+        );
+      case "profile":
+        return (
+          <PlaceholderScreen
+            title="Profile"
+            subtitle="Personalise your experience and keep your preferences in sync."
+          />
+        );
+      default:
+        return null;
+    }
+  }, [activeTab]);
+
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {products.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </View>
-    </ScrollView>
+    <SafeAreaView style={layoutStyles.screen}>
+      <StatusBar barStyle="dark-content" />
+      <View style={layoutStyles.content}>{content}</View>
+      <BottomTabBar activeTab={activeTab} tabs={TAB_ITEMS} onTabPress={handleTabPress} />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
